@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 
+const PhotoLink = (props) => (
+  <Link to={`/${props.photo.id}`}>
+    <img src={props.photo.thumbnailUrl} />
+  </Link>
+)
+
 class PhotoList extends Component {
   constructor() {
     super()
@@ -21,19 +27,19 @@ class PhotoList extends Component {
   }
 
   render() {
-    let photos
+    let pageContent
     if (this.state.photos.length) {
-      photos = this.state.photos.map(photo =>
-          <Link to={`/${photo.id}`}><img src={photo.thumbnailUrl}></img></Link>
+      pageContent = this.state.photos.map(photo =>
+        <PhotoLink photo={photo} />
       )
     } else {
-      photos = 'loading...'
+      pageContent = 'loading...'
     }
 
     return (
       <React.Fragment>
         <h1>photo list</h1>
-        {photos}
+        {pageContent}
       </React.Fragment>
     )
   }
