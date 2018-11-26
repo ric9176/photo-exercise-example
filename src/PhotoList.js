@@ -24,7 +24,7 @@ class PhotoList extends Component {
     let photos
     if (this.state.photos.length) {
       photos = this.state.photos.map(photo =>
-          <Link to={`/${photo.id}`}><img src={photo.thumbnailUrl}></img></Link>
+        <Link to={`/${photo.id}`}><img src={photo.thumbnailUrl}></img></Link>
       )
     } else {
       photos = 'loading...'
