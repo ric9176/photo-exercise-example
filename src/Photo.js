@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const Photo= (props) => {
+const Photo = (props) => {
   const [photo, setPhoto] = useState({})
 
   useEffect(() => {
@@ -15,14 +15,13 @@ const Photo= (props) => {
     })
   }, [])
   
-  console.log(photo)
   if (!photo.id) {
     return <h1>'Loading...'</h1>
   } else {
     return (
       <React.Fragment>
-           <h1>photo {photo.id}</h1>
-           <img src={photo.thumbnailUrl} />
+        <h1>photo {photo.id}</h1>
+        <img src={photo.thumbnailUrl} />
      </React.Fragment>
     )
   }
