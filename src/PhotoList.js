@@ -10,14 +10,16 @@ const PhotoLink = (props) => (
 const PhotoList = (props) => {
   const [photos, setPhoto] = useState([])
 
+const fetchPhotos = async () => {
+ const response = await fetch('http://jsonplaceholder.typicode.com/photos?_limit=30', {
+    method: 'get',
+  })
+  const json = await response.json()
+  setPhoto(json)
+}
+
   useEffect(() => {
-    fetch('http://jsonplaceholder.typicode.com/photos?_limit=30', {
-      method: 'get',
-    })
-    .then(response => response.json())
-    .then(photos => {
-      setPhoto(photos)
-    })
+    fetchPhotos()
   }, [])
   
   if (!photos.length) {
