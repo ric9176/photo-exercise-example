@@ -3,16 +3,17 @@ import React, { useState, useEffect } from 'react';
 const Photo = (props) => {
   const [photo, setPhoto] = useState({})
 
-  useEffect(() => {
+  const fetchPhoto = async () => {
     const photoId = props.match.params.id
-  
-    fetch(`http://jsonplaceholder.typicode.com/photos/${photoId}`, {
+    const response = await fetch(`http://jsonplaceholder.typicode.com/photos/${photoId}`, {
       method: 'get',
     })
-    .then(response => response.json())
-    .then(photo => {
-      setPhoto(photo)
-    })
+    const json = await response.json()
+    setPhoto(json)
+  }
+
+  useEffect(() => {
+    fetchPhoto()
   }, [])
   
   if (!photo.id) {

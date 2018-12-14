@@ -8,14 +8,14 @@ const PhotoLink = (props) => (
 )
 
 const PhotoList = (props) => {
-  const [photos, setPhoto] = useState([])
+  const [photos, setPhotos] = useState([])
 
 const fetchPhotos = async () => {
  const response = await fetch('http://jsonplaceholder.typicode.com/photos?_limit=30', {
     method: 'get',
   })
   const json = await response.json()
-  setPhoto(json)
+  setPhotos(json)
 }
 
   useEffect(() => {
